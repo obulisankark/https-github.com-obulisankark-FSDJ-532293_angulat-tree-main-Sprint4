@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<h1>Angular JS Data binding.</h1>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <p ng-bind="firstname"></p>
+	<p ng-bind="lastname"></p>
+    <p ng-bind="email"></p>
+	
+	<p>The below header will change after two seconds:</p>
+	<h1>{{myHeader}}</h1>
+	
+	<p>The time is:</p>
+	<h1>{{theTime}}</h1>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $interval) {
+  $scope.myHeader = "Angular JS Demo Data binding & Services !";
+    $scope.theTime = new Date().toLocaleTimeString();
+  $interval(function () {
+      $scope.myHeader = "Angular JS Services";
+      $scope.theTime = new Date().toLocaleTimeString();	  
+  }, 1000);
+    $scope.firstname = "Obuli";
+	$scope.lastname = "Sankar";
+    $scope.email = "Obuli@ABC.com";
+});
+</script>
+
+</body>
+</html>
